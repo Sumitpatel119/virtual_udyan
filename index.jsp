@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        #img:hover{
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color: green;" href="#">Virtual Udyan</a>
+          <a class="navbar-brand" style="color: green;" href="garden_layout.html">Go to your Virtual garden</a>
+          <a class="navbar-brand" style="color: green;" href="quiz.html">Quizes</a>
+          <a class="navbar-brand" style="color: green;" href="search.html"><img src="search.png" height="30px">Search</a>
+        </div>
+    </nav>
+    <div>
+        <img src="images/plant.jpg" class="mt-1" width="100%" height="400px">
+    </div>
+    <div class="p-2">
+        <h3 class="text-center">Making our digital world the better place</h3>
+        <h2 class="text-center">Don't miss out! Your Free Land Is Waiting For You</h2>
+        <h3 class="text-center">Gardening never stops online or offline.</h3>
+    </div>
+    <div class="row justify-content-center align-item-center p-2">
+        <img class="col-1"  src="images/tulsi.jpg" id="img">
+        <img class="col-1"  src="images/bhringraj.jpg" id="img">
+        <img class="col-1"  src="images/bramhi.jpg" id="img">
+        <img class="col-1"  src="images/mint.jpg" id="img">
+      </div>
+      
+      <h3 class="text-center p-3" style="color: orange;">Some of the most searched plants</h3>
+      
+      <div class="row justify-content-center align-item-center">
+        <div class="card col-3 ms-3" style="width: 18rem;">
+          <img class="card-img-top p-1" height="200px" src="images/tulsi.jpg">
+              <div class="card-body">
+                <p class="card-text"><strong>Plant Name : Tulsi</strong></p>
+                <p class="card-text"><strong>Botanical Name : Ocimum tenuiflorum</strong></p>
+                <p class="card-text"><strong>Family : Lamiaceae</strong></p>
+                
+                <button class="btn btn-success" id="btn_tulsi">know more</button>
+              </div>
+        </div>
+        <div class="card col-3 ms-3" style="width: 18rem;">
+          <img class="card-img-top p-1" height="200px" src="images/rosemerry.jpg">
+              <div class="card-body">
+                <p class="card-text"><strong>Plant Name : Rosemerry</strong></p>
+                <p class="card-text"><strong>Botanical Name : Rosmarinus officinalis </strong></p>
+                <p class="card-text"><strong>Family : Lamiaceae </strong></p>
+                
+                <button class="btn btn-success">know more</button>
+              </div>
+        </div>
+        <div class="card col-3 ms-3" style="width: 18rem;">
+          <img class="card-img-top p-1" height="200px" src="images/aloe_vera.jpg">
+              <div class="card-body">
+                <p class="card-text"><strong>Plant Name : Aloe Vera</strong></p>
+                <p class="card-text"><strong>Botanical Name : Aloe barbadensis Mill</strong></p>
+                <p class="card-text"><strong>Family : Asphodelaceae</strong></p>
+                
+                <button class="btn btn-success" id="aloevera_btn">know more</button>
+              </div>
+        </div>
+        <div class="card col-3 ms-3" style="width: 18rem;">
+          <img class="card-img-top p-1" height="200px" src="images/thyme.jpg">
+              <div class="card-body">
+                <p class="card-text"><strong>Plant Name : Thyme</strong></p>
+                <p class="card-text"><strong>Botanical Name : Thymus vulgaris</strong></p>
+                <p class="card-text"><strong>Family : Lamiaceae</strong></p>
+                
+                <button class="btn btn-success">know more</button>
+              </div>
+        </div>
+              
+      </div>
+
+    <footer class="bg-light p-3">
+        <!-- Section: Links  -->
+        <section class="mt-3">
+          <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  <i class="fas fa-gem me-3"></i>Company name
+                </h6>
+                <p>
+                  Virtual Udyan
+                </p>
+              </div>
+              <!-- Grid column -->
+      
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  Information
+                </h6>
+                <p>
+                  <a href="#!" class="text-reset">Medicinal plant</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">taxonomy</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">habitat</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">enviornment</a>
+                </p>
+              </div>
+              <!-- Grid column -->
+      
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  features
+                </h6>
+                <p>
+                  <a href="#!" class="text-reset">360 view</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">3D model</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">AR-VR experience</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Help</a>
+                </p>
+              </div>
+              <!-- Grid column -->
+      
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                <p><i class="fas fa-home me-3"></i> Jabalpur , Madhya Pradesh ,India</p>
+                <p>
+                  <i class="fas fa-envelope me-3"></i>
+                  virtualUdyan.com
+                </p>
+                <p><i class="fas fa-phone me-3"></i> + xx xx xx xx xx</p>
+                <p><i class="fas fa-print me-3"></i> + xx xx xx xx xx</p>
+              </div>
+              <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+          </div>
+        </section>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script>
+      const btn_tulsi = document.querySelector("#btn_tulsi");
+      const aloevera_btn = document.querySelector("#aloevera_btn");
+      btn_tulsi.addEventListener("click",()=>{
+        window.location.href = 'tulsi.html';
+      });
+      
+    </script>
+</body>
+</html>

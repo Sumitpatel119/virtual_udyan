@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicinal Plants Drag & Drop Garden</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background-image: url('sky4.png');
+            position: relative;
+        }
+
+        .sidebar {
+            width: 25%;
+            background-color: #f4f4f4;
+            padding: 15px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin: 0 0 15px 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 20px;
+            text-align: center;
+            cursor: grab;
+        }
+
+        .sidebar li img {
+            width: 100%;
+            max-height: 100px;
+            border-radius: 8px;
+            object-fit: contain;
+            cursor: grab;
+        }
+
+        .sidebar li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        .main-content {
+            width: 75%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .grid-item {
+            /* border: 3px solid black; */
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .grid-item.highlight {
+            border: 3px solid green;
+        }
+
+        .plant {
+            position: absolute;
+            max-width: 100px;
+            max-height: 100px;
+            cursor: grab;
+            z-index: 3;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: none;
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        .plant:hover .delete-btn {
+            display: block;
+        }
+
+        /* Marks Display */
+        .marks-display {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Marks Display -->
+    <div class="marks-display" id="marksDisplay">Total Marks: 0</div>
+    <div class="sidebar">
+        
+        <button class="ms-5"><a href="index.jsp">Go to Home</a></button>
+        <h2>Medicinal Plants</h2>
+        <ul>
+            <li draggable="true" data-image="images/plant1.png">
+                <img src="images/plant1.png" alt="Tree">
+                <a href="#">plant 1</a>
+            </li>
+            <li draggable="true" data-image="images/plant2.png">
+                <img src="images/plant2.png" alt="Design">
+                <a href="#">plant 2</a>
+            </li>
+            <li draggable="true" data-image="images/plant3.png">
+                <img src="images/plant3.png" alt="Ashwagandha">
+                <a href="#">plant 3</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="main-content">
+        <div class="grid-item" id="grid1">
+            <img src="soil1.jpg" alt="Soil 1">
+        </div>
+        <div class="grid-item" id="grid2">
+            <img src="soil2.jpg" alt="Soil 2">
+        </div>
+        <div class="grid-item" id="grid3">
+            <img src="soil3.jpeg" alt="Soil 3">
+        </div>
+        <div class="grid-item" id="grid4">
+            <img src="soil4.jpeg" alt="Soil 4">
+        </div>
+    </div>
+
+    <script>
+        let totalMarks = 0;  // Total marks variable
+        const marksDisplay = document.getElementById('marksDisplay');
+
+        // Update the marks display
+        function updateMarksDisplay() {
+            marksDisplay.textContent = `Total Marks: ${totalMarks}`;
+        }
+
+        const gridItems = document.querySelectorAll('.grid-item');
+
+        gridItems.forEach(grid => {
+            grid.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                grid.classList.add('highlight');
+            });
+
+            grid.addEventListener('dragleave', () => {
+                grid.classList.remove('highlight');
+            });
+
+            grid.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const draggedImageURL = e.dataTransfer.getData('text/plain');
+
+                const plant = document.createElement('div');
+                plant.classList.add('plant');
+
+                const plantImage = document.createElement('img');
+                plantImage.src = draggedImageURL;
+                plant.appendChild(plantImage);
+
+                // Create delete button
+                const deleteBtn = document.createElement('button');
+                deleteBtn.classList.add('delete-btn');
+                deleteBtn.textContent = 'X';
+                plant.appendChild(deleteBtn);
+
+                // Snapping image to the center of the grid
+                plant.style.left = `${(grid.clientWidth - 100) / 2}px`;
+                plant.style.top = `${(grid.clientHeight - 100) / 2}px`;
+
+                // Add plant to the grid
+                grid.appendChild(plant);
+                grid.classList.remove('highlight');
+
+                // Increase marks by 10 for each drag
+                totalMarks += 10;
+                updateMarksDisplay();
+
+                // Handle deleting the plant
+                deleteBtn.addEventListener('click', () => {
+                    grid.removeChild(plant);
+                    // Deduct marks by 10 for each delete
+                    totalMarks -= 10;
+                    updateMarksDisplay();
+                });
+
+                // Enable dragging of the dropped image within the grid
+                plantImage.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    const shiftX = e.clientX - plant.getBoundingClientRect().left;
+                    const shiftY = e.clientY - plant.getBoundingClientRect().top;
+
+                    const onMouseMove = (e) => {
+                        plant.style.left = `${e.clientX - shiftX - grid.offsetLeft}px`;
+                        plant.style.top = `${e.clientY - shiftY - grid.offsetTop}px`;
+                    };
+
+                    const onMouseUp = () => {
+                        document.removeEventListener('mousemove', onMouseMove);
+                        document.removeEventListener('mouseup', onMouseUp);
+                    };
+
+                    document.addEventListener('mousemove', onMouseMove);
+                    document.addEventListener('mouseup', onMouseUp);
+                });
+            });
+        });
+
+        document.querySelectorAll('.sidebar li').forEach(item => {
+            item.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', item.dataset.image);
+            });
+        });
+    </script>
+
+</body>
+</html>
